@@ -10,4 +10,7 @@ public class main {
 		SpringApplication.run(main.class, args);
 	}
 
+
 }
+
+
