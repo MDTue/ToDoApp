@@ -1,4 +1,4 @@
-package com.example.demo;
+package de.neuefischeToDoApp;
 
 import org.springframework.stereotype.Service;
 
@@ -20,5 +20,11 @@ public class ToDoService {
         ToDo newToDo = new ToDo(jobToDo, "0");
         myToDoRepo.addToDo(newToDo);
 
+
+    }
+
+    public void changeStatus(String id) {
+        ToDo idToChange = myToDoRepo.get(id);
+        idToChange.setJobStatus("1");
     }
 }

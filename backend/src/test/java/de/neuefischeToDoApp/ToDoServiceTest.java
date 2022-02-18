@@ -1,8 +1,6 @@
-package com.example.demo;
+package de.neuefischeToDoApp;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ToDoServiceTest {
     @Test

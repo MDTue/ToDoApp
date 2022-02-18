@@ -1,4 +1,4 @@
-package com.example.demo;
+package de.neuefischeToDoApp;
 
 import org.springframework.stereotype.Repository;
 
@@ -22,5 +22,9 @@ public class ToDoRepo {
 
     public void addToDo(ToDo newToDo){
         allMyJobs.put(newToDo.getJobId(),newToDo);
+    }
+
+    public void changeToDo(ToDo existingToDo){
+
     }
 }

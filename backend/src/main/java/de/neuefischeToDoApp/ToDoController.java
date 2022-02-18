@@ -1,10 +1,8 @@
-package com.example.demo;
+package de.neuefischeToDoApp;
 
-import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 
 @RestController
 @RequestMapping("/todo")
@@ -12,7 +10,6 @@ import java.util.List;
 public class ToDoController {
 
     private final ToDoService toDoService;
-
 
     public ToDoController(ToDoService toDoService) {
         this.toDoService = toDoService;
@@ -27,5 +24,11 @@ public class ToDoController {
         toDoService.addToDo(jobToDo);
 
     }
+    @PutMapping ("/{id}")
+    public void changeStatus(@PathVariable String id){
+        toDoService.changeStatus(id);
+
+    }
+
 
 }
