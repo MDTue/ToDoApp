@@ -22,13 +22,17 @@ public class ToDoController {
     @PostMapping
     public void addToDo(@RequestBody String jobToDo){
         toDoService.addToDo(jobToDo);
-
     }
+
     @PutMapping ("/{id}")
     public void changeStatus(@PathVariable String id){
         toDoService.changeStatus(id);
-
     }
 
+    @GetMapping("/allnewToDos")
+    public List <ToDo> showNewToDos(){
+        return toDoService.getOpenToDos();
+
+    }
 
 }

@@ -19,12 +19,18 @@ public class ToDoService {
     public void addToDo(String jobToDo){
         ToDo newToDo = new ToDo(jobToDo, "0");
         myToDoRepo.addToDo(newToDo);
-
-
     }
 
     public void changeStatus(String id) {
         ToDo idToChange = myToDoRepo.get(id);
         idToChange.setJobStatus("1");
+    }
+
+
+    public List<ToDo> getOpenToDos() {
+         List<ToDo> allToDos = myToDoRepo.list();
+         return allToDos.stream()
+                 .filter(s->s.getJobStatus().equals("0"))
+                 .toList();
     }
 }
