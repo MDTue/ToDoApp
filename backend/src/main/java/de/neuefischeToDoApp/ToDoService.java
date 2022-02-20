@@ -12,6 +12,9 @@ public class ToDoService {
         this.myToDoRepo = myToDoRepo;
     }
 
+    public ToDoService() {
+    }
+
     public List<ToDo> getAllToDo() {
         return myToDoRepo.list();
     }
@@ -32,5 +35,10 @@ public class ToDoService {
          return allToDos.stream()
                  .filter(s->s.getJobStatus().equals("0"))
                  .toList();
+    }
+
+    public List<ToDo> getAllToDos() {
+        List<ToDo> allToDos = myToDoRepo.list();
+        return allToDos;
     }
 }
