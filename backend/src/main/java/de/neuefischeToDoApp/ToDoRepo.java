@@ -8,10 +8,12 @@ import java.util.List;
 @Repository
 public class ToDoRepo {
 
-    private final HashMap<String,ToDo> allMyJobs;
+    private final HashMap<String, ToDo> allMyJobs;
     public ToDoRepo() {allMyJobs = new HashMap<>();}
 
-    public List<ToDo> list() {return allMyJobs.values().stream().toList();}
+    public List<ToDo> list() {
+        return allMyJobs.values().stream().toList();}
+
     public ToDo get(String whichJobId){
         return allMyJobs.get(whichJobId);
     }
@@ -23,9 +25,8 @@ public class ToDoRepo {
         allMyJobs.put(newToDo.getJobId(),newToDo);
     }
 
-    /*
-    public void changeToDo(ToDo existingToDo){
 
+    public void idToDelete(String id) {
+        allMyJobs.remove(id);
     }
-    */
 }

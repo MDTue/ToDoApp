@@ -6,6 +6,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/todo")
+@CrossOrigin
+
 
 public class ToDoController {
 
@@ -34,5 +36,10 @@ public class ToDoController {
         return toDoService.getOpenToDos();
 
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteToDo(@PathVariable String id) {toDoService.deleteId(id);
+    }
+
 
 }

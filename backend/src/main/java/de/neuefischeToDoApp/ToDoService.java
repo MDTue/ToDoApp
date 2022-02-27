@@ -1,18 +1,16 @@
 package de.neuefischeToDoApp;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class ToDoService {
-    private ToDoRepo myToDoRepo;
-
+    private final ToDoRepo myToDoRepo;
+@Autowired
     public ToDoService(ToDoRepo myToDoRepo){
         this.myToDoRepo = myToDoRepo;
-    }
-
-    public ToDoService() {
     }
 
     public List<ToDo> getAllToDo() {
@@ -40,5 +38,10 @@ public class ToDoService {
     public List<ToDo> getAllToDos() {
         List<ToDo> allToDos = myToDoRepo.list();
         return allToDos;
+    }
+
+    public void deleteId(String id) {
+    ToDo idToDelete = myToDoRepo.get(id);
+    myToDoRepo.idToDelete(id);
     }
 }
