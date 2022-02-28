@@ -1,4 +1,4 @@
-import exp from "constants";
+
 import {useEffect, useState} from "react";
 
 export interface ToDoProps {
@@ -51,11 +51,10 @@ export function TodoItem(props: TodoItemProps) {
 }
 
 export function AddTodo(props: TodoItemProps) {
-    const addTodo = () => {
-        fetch(`http://localhost:8080/todos/${props.todo.jobId}`, {method: 'PUT'})
+            fetch(`http://localhost:8080/todos/${props.todo.jobId}`, {method: 'PUT'})
             .then(response => response.json())
             .then((todos: Array<ToDoProps>) => props.onItemChange(todos));
-    }
+
 }
 
 export function TodoItemChangeStatus(props: TodoItemProps) {

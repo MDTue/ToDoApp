@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import TodoList, {ToDoProps, Response as ResponseBody, TodoItem, TodoItemProps, AddTodo} from './ToDoModel';
 
 export default function ToDoFrontEnd() {
-    const [search, setSearch] = useState('');
+ //   const [search, setSearch] = useState('');
     const [todos, setTodos] = useState([] as Array<ToDoProps>);
 
 
@@ -14,23 +14,24 @@ export default function ToDoFrontEnd() {
             });
         }
 
-        useEffect(() => {
+  /*      useEffect(() => {
             fetchData()
         }, []);
-
+*/
 
 
     return (
             <div>
                 <h1> ToDo App</h1>
-                <div id="landingPage">
+
 
                   <button onClick={() => fetchData('http://localhost:8080/todo/allnewToDos')}>Alle neuen ToDos </button>
                   <button onClick={() => fetchData('http://localhost:8080/todo')}>Alle ToDos</button>
                   <button onClick={() => AddTodo}>Neues ToDo</button>
-
+                <div id="landingPage">
+                    <ul>
                     { todos.map(todo => <TodoItem key={todo.jobId} todo={todo} onItemChange={setTodos} />)}
-
+                    </ul>
 
                 </div>
             </div>
