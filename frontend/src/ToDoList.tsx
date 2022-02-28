@@ -26,6 +26,8 @@ export default function ToDoList() {
             <div>
                 <ToDoForm onToDoCreation={setToDos}/>
             </div>
+            <h1> ToDo App</h1>
+
             <div>
                 <button onClick={deleteChecked}>Alle abgehakten löschen</button>
             </div>

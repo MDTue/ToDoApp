@@ -18,7 +18,7 @@ export default function ToDoForm(props: ToDoFromProps){
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                task: task,
+                jobToDo: task,
                 description: description
             })
         })
@@ -32,7 +32,7 @@ export default function ToDoForm(props: ToDoFromProps){
     return(
         <div>
             <input type="text" placeholder="Aufgabe" value ={task} onChange={ev => setTask(ev.target.value)}/>
-            <input type="text" placeholder="Beschreibung" value={description} onChange={ev => setDescription(ev.target.value)}/>
+            <input type="text" placeholder="Beschreibung" value={description} onChange={ev => setDescription(ev.target.value)} className="description-field"/>
             <button onClick={addTask}>Senden</button>
         </div>
     )
