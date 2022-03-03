@@ -9,7 +9,7 @@ interface ToDoItemProps {
 
 export default function ToDoItem(props: ToDoItemProps) {
     const deleteToDo = () => {
-        fetch(`http://localhost:8080/todos/${props.todo.jobId}`, {
+        fetch(`${process.env.REACT_APP_BASE_URL}${props.todo.jobId}`, {
             method: 'DELETE'
         })
             .then(() => props.onToDoDeletion());
@@ -17,7 +17,7 @@ export default function ToDoItem(props: ToDoItemProps) {
     const toggle = () => {
         const newStatus = props.todo.jobStatus === JobStatus.Open ? JobStatus.Done : JobStatus.Open;
 
-        fetch(`https://localhost:8080/todos/${props.todo.jobId}`, {
+        fetch(`${process.env.REACT_APP_BASE_URL}/todos/${props.todo.jobId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

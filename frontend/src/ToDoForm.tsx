@@ -12,7 +12,7 @@ export default function ToDoForm(props: ToDoFromProps){
     const[description, setDescription] = useState('');
 
     const addTask = () => {
-        fetch('http://localhost:8080/todos',{
+        fetch(`${process.env.REACT_APP_BASE_URL}/todos`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

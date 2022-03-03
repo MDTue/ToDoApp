@@ -7,12 +7,12 @@ import ToDoItem from "./ToDoItem";
 export default function ToDoList() {
     const[toDos, setToDos] = useState([] as Array<ToDo>);
     const fetchAll = () => {
-        fetch('http://localhost:8080/todos')
+        fetch(`${process.env.REACT_APP_BASE_URL}/todos`)
             .then(response => response.json())
             .then((toDosFromBackend: Array<ToDo>) => setToDos(toDosFromBackend));
     }
     const deleteChecked = () => {
-        fetch('http://localhost:8080/todos', {method: 'DELETE'})
+        fetch(`${process.env.REACT_APP_BASE_URL}/todos`, {method: 'DELETE'})
             .then(response => response.json())
             .then((toDosFromBackend: Array<ToDo>) => setToDos(toDosFromBackend));
     }
