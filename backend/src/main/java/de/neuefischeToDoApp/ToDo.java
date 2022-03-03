@@ -4,13 +4,22 @@ import java.util.UUID;
 
 public class ToDo {
     String jobToDo;
-    String jobStatus;
+    Status jobStatus;
     String jobId;
+    String description;
 
-    public ToDo(String jobToDo, String jobStatus) {
+    public ToDo(String jobToDo, Status jobStatus) {
         this.jobToDo = jobToDo;
         this.jobStatus = jobStatus;
         this.jobId = UUID.randomUUID().toString();
+          }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public ToDo() {
@@ -33,11 +42,11 @@ public class ToDo {
         this.jobToDo = jobToDo;
     }
 
-    public String getJobStatus() {
+    public Status getJobStatus() {
         return jobStatus;
     }
 
-    public void setJobStatus(String jobStatus) {
+    public void setJobStatus(Status jobStatus) {
         this.jobStatus = jobStatus;
     }
 }
