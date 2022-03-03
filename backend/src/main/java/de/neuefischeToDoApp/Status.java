@@ -1,2 +1,6 @@
-package de.neuefischeToDoApp;public enum Status {
+package de.neuefischeToDoApp;
+
+public enum Status {
+    OPEN,
+    DONE
 }
