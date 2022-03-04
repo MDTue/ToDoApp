@@ -1,0 +1,9 @@
+{
+  "Aufgabe" : "Aufgabe" ,
+  "Beschreibung": "Beschreibung",
+  "Senden": "Senden",
+  "DeleteSelected": "Alle abgehakten löschen",
+  "Delete" : "löschen",
+  "NotFound" : "Fehler beim Aufruf der Seite."
+
+}

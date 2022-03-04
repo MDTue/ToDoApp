@@ -1,0 +1,9 @@
+{
+  "Aufgabe" : "task" ,
+  "Beschreibung": "description",
+  "Senden": "send",
+  "DeleteSelected": "delete all selected Items",
+  "Delete" : "delete",
+  "NotFound" : "Page not found"
+
+}
