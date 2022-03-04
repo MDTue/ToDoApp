@@ -16,11 +16,10 @@ export default function ToDoList() {
                 if (response.status===200) {
                     return response.json()
                 }
-                throw new Error(`{t('NotFound')}`)
+                throw new Error(t('NotFound'))
             })
-            .then(response => response.json())
             .then((toDosFromBackend: Array<ToDo>) => setToDos(toDosFromBackend))
-            .catch(e  => setErrorMessage(e.message))
+            .catch(e  => setErrorMessage(e.errorMessage))
     }
     const deleteChecked = () => {
         fetch(`${process.env.REACT_APP_BASE_URL}/todos`, {method: 'DELETE'})
@@ -30,9 +29,8 @@ export default function ToDoList() {
                 }
                 throw new Error(`{t('NotFound')}`)
             })
-            .then(response => response.json())
             .then((toDosFromBackend: Array<ToDo>) => setToDos(toDosFromBackend))
-            .catch(e  => setErrorMessage(e.message))
+            .catch(e  => setErrorMessage(e.ErrorMessage))
     }
 
     useEffect(() => {

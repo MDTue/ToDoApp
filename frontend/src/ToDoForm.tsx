@@ -29,9 +29,8 @@ export default function ToDoForm(props: ToDoFromProps){
                 if (response.status === 200) {
                     return response.json()
                 }
-                throw new Error(`{t('NotFound')}`)
+                throw new Error(t('NotFound'))
             })
-            .then(response => response.json())
             .then((toDosFromBackend: Array<ToDo>) => {
                 setTask('');
                 setDescription('');

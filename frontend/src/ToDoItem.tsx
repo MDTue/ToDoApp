@@ -15,15 +15,9 @@ export default function ToDoItem(props: ToDoItemProps) {
 
 
     const deleteToDo = () => {
-        fetch(`${process.env.REACT_APP_BASE_URL}${props.todo.jobId}`, {
+        fetch(`${process.env.REACT_APP_BASE_URL}/todos/${props.todo.jobId}`, {
             method: 'DELETE'
         })
-            .then(response => {
-                if (response.status===200) {
-                    return response.json()
-                }
-                throw new Error(`{t('NotFound')}`)
-            })
             .then(() => props.onToDoDeletion())
             .catch(e  => setErrorMessage(e.message))
     };
@@ -48,14 +42,13 @@ export default function ToDoItem(props: ToDoItemProps) {
                 }
                 throw new Error(`{t('NotFound')}`)
             })
-            .then(response => response.json())
             .then((toDosFromBackend: Array<ToDo>) => props.onToDoChange(toDosFromBackend))
             .catch(e  => setErrorMessage(e.message))
     }
 
     return(
         <div>
-            <span className={props.todo.jobStatus === JobStatus.Done ? 'selected': ''} onClick={toggle}>{props.todo.jobToDo} - {props.todo.description}</span> <button onClick={deleteToDo}>{t('Delete')}</button>
+            <span className={props.todo.jobStatus === JobStatus.Done ? 'selected': ''} onClick={toggle}>{props.todo.jobToDo} - {props.todo.description}</span> <button onClick={()=>deleteToDo()}>{t('Delete')}</button>
 
         </div>
     )
