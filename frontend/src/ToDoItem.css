@@ -1,3 +1,7 @@
 .selected{
     text-decoration: line-through;
-} 
+}
+
+.container {
+    display: inline-grid;
+}

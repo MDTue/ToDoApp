@@ -1,17 +1,1 @@
 
-body {
-    background-color: lightyellow;
-}
-
-.todo-list {
-    background-color: aquamarine;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: repeat(auto-fill,40%);
-    display: inline-grid;
-    justify-items: center;
-    column-gap:50px;
-    row-gap: 50px;
-    border-style : double;
-    border-radius: 3%;
-    width: 60px;
-}
