@@ -14,8 +14,6 @@ export default function ToDoForm(props: ToDoFromProps){
     const[description, setDescription] = useState(localStorage.getItem('despcription') ?? '');
     const[errorMessage, setErrorMessage] = useState('');
 
-    console.log("start ToDoForm");
-
     const addTask = () => {
         fetch(`${process.env.REACT_APP_BASE_URL}/todos`,{
             method: 'POST',
@@ -42,15 +40,15 @@ export default function ToDoForm(props: ToDoFromProps){
     }
     useEffect(() => {
         localStorage.setItem('task',task);
-    }, [setTask(task)]);
+    }, []);
 
     useEffect(() => {
         localStorage.setItem('description',description);
-    }, [setDescription(description)]);
+    }, []);
 
     return(
         <div>
-            console.log("im div angekommen")
+
             <input type="text" placeholder={t('Aufgabe')} value ={task} onChange={ev => setTask(ev.target.value)}/>
             <input type="text" placeholder={t('Beschreibung')} value={description} onChange={ev => setDescription(ev.target.value)} className="description-field"/>
             <button onClick={addTask}>{t('Senden')}</button>
