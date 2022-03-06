@@ -11,7 +11,7 @@ interface ToDoFromProps {
 export default function ToDoForm(props: ToDoFromProps){
     const {t} = useTranslation();
     const[task, setTask] = useState(localStorage.getItem('task') ?? '');
-    const[description, setDescription] = useState(localStorage.getItem('despcription') ?? '');
+    const[description, setDescription] = useState(localStorage.getItem('description') ?? '');
     const[errorMessage, setErrorMessage] = useState('');
 
     const addTask = () => {
@@ -40,11 +40,9 @@ export default function ToDoForm(props: ToDoFromProps){
     }
     useEffect(() => {
         localStorage.setItem('task',task);
-    }, []);
-
-    useEffect(() => {
         localStorage.setItem('description',description);
-    }, []);
+    }, [task, description]);
+
 
     return(
         <div>
