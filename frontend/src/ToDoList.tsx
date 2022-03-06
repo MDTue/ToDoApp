@@ -3,6 +3,7 @@ import {ToDo} from "./model";
 import ToDoForm from "./ToDoForm";
 import ToDoItem from "./ToDoItem";
 import {useTranslation} from 'react-i18next';
+import {Link} from "react-router-dom";
 
 
 export default function ToDoList() {
@@ -30,7 +31,7 @@ export default function ToDoList() {
                 throw new Error(`{t('NotFound')}`)
             })
             .then((toDosFromBackend: Array<ToDo>) => setToDos(toDosFromBackend))
-            .catch(e  => setErrorMessage(e.ErrorMessage))
+            .catch(e  => setErrorMessage(e.errorMessage))
     }
 
     useEffect(() => {
@@ -38,6 +39,7 @@ export default function ToDoList() {
     },[]);
 
     return(
+        <Link to={'/todolist'}>
         <div className="todo-list">
             <div>
                 <ToDoForm onToDoCreation={setToDos}/>
@@ -45,11 +47,12 @@ export default function ToDoList() {
             <h1> ToDo App</h1>
 
             <div>
-                <button onClick={deleteChecked}>{t('DeleteSelected')}</button>
+                {/*  // <button onClick={deleteChecked}>{t('DeleteSelected')}</button> */}
             </div>
             <ul>
                 {toDos.length>0 && toDos.map(todo => <li key={todo.jobId}><ToDoItem todo={todo} onToDoDeletion={fetchAll} onToDoChange={setToDos} /></li>)}
             </ul>
         </div>
+        </Link>
     )
 }

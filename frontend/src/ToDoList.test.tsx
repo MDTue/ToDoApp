@@ -1,5 +1,8 @@
 import {fireEvent, waitFor, render, screen} from '@testing-library/react';
 import ToDoList from "./ToDoList";
+import {MemoryRouter} from 'react-router-dom';
+
+
 
 test('Mocken von http hat geklappt', async() => {
     jest.spyOn(global, 'fetch').mockImplementation(() => {
@@ -30,8 +33,11 @@ test('Mocken von http hat geklappt', async() => {
         } as Response);
     });
 
-    render(<ToDoList/>);
+    render(<ToDoList/>, {wrapper: MemoryRouter});
     await waitFor(() => {
         expect(screen.getAllByTestId('todolist').length).toBe(3);
     });
 })
+
+
+

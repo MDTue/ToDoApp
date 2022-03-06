@@ -1,7 +1,8 @@
 import {JobStatus, ToDo} from "./model";
 import './ToDoItem.css'
 import {useTranslation} from 'react-i18next';
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 
 interface ToDoItemProps {
     todo: ToDo
@@ -13,8 +14,7 @@ export default function ToDoItem(props: ToDoItemProps) {
     const {t} = useTranslation();
     const[errorMessage, setErrorMessage] = useState('');
 
-
-    const deleteToDo = () => {
+        const deleteToDo = () => {
         fetch(`${process.env.REACT_APP_BASE_URL}/todos/${props.todo.jobId}`, {
             method: 'DELETE'
         })
@@ -49,7 +49,6 @@ export default function ToDoItem(props: ToDoItemProps) {
     return(
         <div>
             <span className={props.todo.jobStatus === JobStatus.Done ? 'selected': ''} onClick={toggle}>{props.todo.jobToDo} - {props.todo.description}</span> <button onClick={()=>deleteToDo()}>{t('Delete')}</button>
-
         </div>
     )
 }

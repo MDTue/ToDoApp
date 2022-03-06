@@ -3,12 +3,22 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './i18n';
+import ToDoList from "./ToDoList";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+{/* import ToDoItem from "./ToDoItem"; */}
 
 
 ReactDOM.render(
     <React.StrictMode>
         <Suspense fallback="Loading..">
-        <App />
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<App />}/>
+                    <Route path= "toDoList" element={<ToDoList/>}/>
+                    {/*    <Route path ="toDoItem/:jobId" element={<ToDoItem />}/>  */ }
+                </Routes>
+            </BrowserRouter>
+
         </Suspense>
     </React.StrictMode>,
   document.getElementById('root')

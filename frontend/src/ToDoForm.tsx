@@ -1,5 +1,5 @@
 import {ToDo} from "./model";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import './ToDoForm.css'
 import {useTranslation} from 'react-i18next';
 
@@ -10,9 +10,11 @@ interface ToDoFromProps {
 
 export default function ToDoForm(props: ToDoFromProps){
     const {t} = useTranslation();
-    const[task, setTask] = useState('');
-    const[description, setDescription] = useState('');
+    const[task, setTask] = useState(localStorage.getItem('task') ?? '');
+    const[description, setDescription] = useState(localStorage.getItem('despcription') ?? '');
     const[errorMessage, setErrorMessage] = useState('');
+
+    console.log("start ToDoForm");
 
     const addTask = () => {
         fetch(`${process.env.REACT_APP_BASE_URL}/todos`,{
@@ -38,8 +40,17 @@ export default function ToDoForm(props: ToDoFromProps){
             })
             .catch(e=> setErrorMessage(e.message));
     }
+    useEffect(() => {
+        localStorage.setItem('task',task);
+    }, [setTask(task)]);
+
+    useEffect(() => {
+        localStorage.setItem('description',description);
+    }, [setDescription(description)]);
+
     return(
         <div>
+            console.log("im div angekommen")
             <input type="text" placeholder={t('Aufgabe')} value ={task} onChange={ev => setTask(ev.target.value)}/>
             <input type="text" placeholder={t('Beschreibung')} value={description} onChange={ev => setDescription(ev.target.value)} className="description-field"/>
             <button onClick={addTask}>{t('Senden')}</button>
