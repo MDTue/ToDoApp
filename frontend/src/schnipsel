@@ -1,2 +1,0 @@
-localStorage.setItem('task',setTask(''));
-localStorage.setItem('description', setDescription(''));
