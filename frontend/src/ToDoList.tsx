@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {ToDo} from "./model";
 import ToDoForm from "./ToDoForm";
 import ToDoItem from "./ToDoItem";
@@ -12,7 +12,7 @@ export default function ToDoList() {
     const[toDos, setToDos] = useState([] as Array<ToDo>);
     const[errorMessage, setErrorMessage] = useState('');
 
-    const fetchAll = () => {
+    const fetchAll = useCallback (() => {
         fetch(`${process.env.REACT_APP_BASE_URL}/todos`)
             .then(response => {
                 if (response.status===200) {
@@ -22,7 +22,7 @@ export default function ToDoList() {
             })
             .then((toDosFromBackend: Array<ToDo>) => setToDos(toDosFromBackend))
             .catch(e  => setErrorMessage(e.message))
-    }
+    },[t])
     const deleteChecked = () => {
         fetch(`${process.env.REACT_APP_BASE_URL}/todos`, {method: 'DELETE'})
             .then(response => {
@@ -37,7 +37,7 @@ export default function ToDoList() {
 
     useEffect(() => {
         fetchAll();
-    },[]);
+    },[fetchAll]);
 
     return(
 

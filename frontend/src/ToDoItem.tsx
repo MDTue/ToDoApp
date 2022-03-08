@@ -1,8 +1,8 @@
 import {JobStatus, ToDo} from "./model";
 import './ToDoItem.css'
 import {useTranslation} from 'react-i18next';
-import {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
+import {useState} from "react";
+
 
 interface ToDoItemProps {
     todo: ToDo
@@ -48,6 +48,7 @@ export default function ToDoItem(props: ToDoItemProps) {
 
     return(
         <div>
+            {errorMessage}
             <span className={props.todo.jobStatus === JobStatus.Done ? 'selected': ''} onClick={toggle}>{props.todo.jobToDo} - {props.todo.description}</span> <button onClick={()=>deleteToDo()}>{t('Delete')}</button>
         </div>
     )
