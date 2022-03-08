@@ -8,9 +8,8 @@ test('Mocken von http hat geklappt', async() => {
     jest.spyOn(global, 'fetch').mockImplementation(() => {
         return Promise.resolve({
             status: 200,
-            json: () => Promise.resolve({
-                info: {},
-                results: [
+            json: () => Promise.resolve(
+                [
                     {
                         jobId: '1',
                         jobToDo: 'Einkaufen',
@@ -29,7 +28,7 @@ test('Mocken von http hat geklappt', async() => {
                         jobStatus: 'DONE',
                         description: 'Obstbäume'
                     }]
-            })
+            )
         } as Response);
     });
 

@@ -21,7 +21,7 @@ export default function ToDoList() {
                 throw new Error(t('NotFound'))
             })
             .then((toDosFromBackend: Array<ToDo>) => setToDos(toDosFromBackend))
-            .catch(e  => setErrorMessage(e.errorMessage))
+            .catch(e  => setErrorMessage(e.message))
     }
     const deleteChecked = () => {
         fetch(`${process.env.REACT_APP_BASE_URL}/todos`, {method: 'DELETE'})
@@ -40,8 +40,10 @@ export default function ToDoList() {
     },[]);
 
     return(
-        <Link to={'/todolist'}>
+
         <div className="todolist">
+            <Link to={'/todolist'}> ToDoListe </Link>
+            {errorMessage}
             <div>
                 <ToDoForm onToDoCreation={setToDos}/>
             </div>
@@ -52,10 +54,10 @@ export default function ToDoList() {
                 {/*  // <button onClick={deleteChecked}>{t('DeleteSelected')}</button> */}
 
                 <ul>
-                    {toDos.length>0 && toDos.map(todo => <li className="spalte1" key={todo.jobId}><ToDoItem todo={todo} onToDoDeletion={fetchAll} onToDoChange={setToDos} /></li>)}
+                    {toDos.length>0 && toDos.map(todo => <li data-testid="todolist" className="spalte1" key={todo.jobId}><ToDoItem todo={todo} onToDoDeletion={fetchAll} onToDoChange={setToDos} /></li>)}
                 </ul>
             </div>
         </div>
-        </Link>
+
     )
 }
