@@ -15,12 +15,12 @@ public class ToDoController {
     }
     @GetMapping
     public List<ToDo> getAllToDo(){
-        return toDoService.getAllToDo();
+        return toDoService.getAllToDos();
     }
     @PostMapping
     public List<ToDo> addToDo(@RequestBody ToDo jobToDo){
         toDoService.addToDo(jobToDo);
-        return toDoService.getAllToDo();
+        return toDoService.getAllToDos();
     }
     @PutMapping ("/{id}")
     public void changeStatus(@PathVariable String id){
