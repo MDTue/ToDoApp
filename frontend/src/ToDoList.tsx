@@ -23,7 +23,6 @@ export default function ToDoList() {
             })
             .then((toDosFromBackend: Array<ToDo>) => setToDos(toDosFromBackend))
             .catch(e  => {
-                console.error(e.message)
                 setErrorMessage(e.message)
             })
     },[])
