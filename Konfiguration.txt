@@ -2,4 +2,5 @@ backend/src/main/resource/application.properties
 spring.data.mongodb.uri=${MONGODB_URI:mongodb://localhost:27017/ToDo}
 
 
-
+In src/main/resources/application.properties:
+spring.mvc.pathmatch.matching-strategy=ant_path_matcher
