@@ -31,7 +31,6 @@ public class ToDoController {
         return toDoService.getOpenToDos();
 
     }
-
     @DeleteMapping("/{id}")
     public void deleteToDo(@PathVariable String id) {toDoService.deleteId(id);
     }

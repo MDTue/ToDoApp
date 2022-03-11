@@ -55,7 +55,7 @@ export default function ToDoList() {
                 <h1> ToDo App</h1>
             </div >
             <div >
-                {/*  // <button onClick={deleteChecked}>{t('DeleteSelected')}</button> */}
+                <button onClick={deleteChecked}>{t('DeleteSelected')}</button>
 
                 <ul>
                     {toDos.length>0 && toDos.map(todo => <li data-testid="todolist" className="spalte1" key={todo.jobId}><ToDoItem todo={todo} onToDoDeletion={fetchAll} onToDoChange={setToDos} /></li>)}

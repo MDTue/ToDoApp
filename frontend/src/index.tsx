@@ -15,7 +15,7 @@ ReactDOM.render(
                 <Routes>
                     <Route path="/" element={<App />}/>
                     <Route path= "toDoList" element={<ToDoList/>}/>
-                    {/*    <Route path ="toDoItem/:jobId" element={<ToDoItem />}/>  */ }
+                    <Route path='*' element={<App />} />
                 </Routes>
             </BrowserRouter>
 
