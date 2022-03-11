@@ -15,7 +15,6 @@ export default function ToDoList() {
     const fetchAll = useCallback (() => {
         fetch(`${process.env.REACT_APP_BASE_URL}/todos`)
             .then(response => {
-                console.log(response.status)
                 if (response.status===200) {
                     return response.json()
                 }

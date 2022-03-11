@@ -5,8 +5,6 @@ import reportWebVitals from './reportWebVitals';
 import './i18n';
 import ToDoList from "./ToDoList";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-{/* import ToDoItem from "./ToDoItem"; */}
-
 
 ReactDOM.render(
     <React.StrictMode>
