@@ -15,21 +15,25 @@ export default function ToDoList() {
     const fetchAll = useCallback (() => {
         fetch(`${process.env.REACT_APP_BASE_URL}/todos`)
             .then(response => {
+                console.log(response.status)
                 if (response.status===200) {
                     return response.json()
                 }
-                throw new Error(t('NotFound'))
+                throw new Error('NotFound')
             })
             .then((toDosFromBackend: Array<ToDo>) => setToDos(toDosFromBackend))
-            .catch(e  => setErrorMessage(e.message))
-    },[t])
+            .catch(e  => {
+                console.error(e.message)
+                setErrorMessage(e.message)
+            })
+    },[])
     const deleteChecked = () => {
         fetch(`${process.env.REACT_APP_BASE_URL}/todos`, {method: 'DELETE'})
             .then(response => {
                 if (response.status === 200) {
                     return response.json()
                 }
-                throw new Error(`{t('NotFound')}`)
+                throw new Error('NotFound')
             })
             .then((toDosFromBackend: Array<ToDo>) => setToDos(toDosFromBackend))
             .catch(e  => setErrorMessage(e.errorMessage))
@@ -43,7 +47,7 @@ export default function ToDoList() {
 
         <div className="todolist">
             <Link to={'/todolist'}> ToDoListe </Link>
-            {errorMessage}
+            {t(errorMessage)}
             <div>
                 <ToDoForm onToDoCreation={setToDos}/>
             </div>

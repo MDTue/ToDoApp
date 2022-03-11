@@ -1,29 +1,12 @@
 
 package de.neuefischeToDoApp;
 import org.springframework.stereotype.Repository;
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import java.lang.annotation.Documented;
 import java.util.HashMap;
 import java.util.List;
 @Repository
-public class ToDoRepo {
+public interface ToDoRepo extends MongoRepository<ToDo , String>{
 
-    private final HashMap<String, ToDo> allMyJobs;
-    public ToDoRepo() {allMyJobs = new HashMap<>();}
-
-    public List<ToDo> list() {
-        return allMyJobs.values().stream().toList();}
-
-    public ToDo get(String whichJobId){
-        return allMyJobs.get(whichJobId);
-    }
-    public HashMap<String, ToDo> getAllMyJobs() {
-        return allMyJobs;
-    }
-    public void addToDo(ToDo newToDo){
-        allMyJobs.put(newToDo.getJobId(),newToDo);
-    }
-
-
-    public void idToDelete(String id) {
-        allMyJobs.remove(id);
-    }
 }
