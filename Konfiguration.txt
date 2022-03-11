@@ -1,0 +1,5 @@
+backend/src/main/resource/application.properties
+spring.data.mongodb.uri=${MONGODB_URI:mongodb://localhost:27017/ToDo}
+
+
+
