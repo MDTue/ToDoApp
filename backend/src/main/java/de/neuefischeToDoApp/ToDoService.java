@@ -23,9 +23,10 @@ public class ToDoService {
         myToDoRepo.save(jobToDo);
     }
     public void changeStatus(String id) {
-        ToDo todo1 = myToDoRepo.findById(id).get();
-        todo1.setJobStatus(Status.OPEN);
-        myToDoRepo.save(todo1);
+        myToDoRepo.findById(id).ifPresent(todo-> {
+            todo.setJobStatus(Status.OPEN);
+            myToDoRepo.save(todo);
+        });
     }
     public List<ToDo> getOpenToDos() {
         List<ToDo> allToDos = myToDoRepo.findAll();
