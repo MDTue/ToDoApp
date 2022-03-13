@@ -9,49 +9,49 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
 
-/*
 class ToDoServiceTest {
 
-    @Autowired
-    @MockBean
-    ToDoService toDoService;
     @Test
-     void shouldListAllToDo(){
+    void shouldAddToDo(){
+        ToDo todo = new ToDo();
+        ToDoRepo dbMock = mock(ToDoRepo.class);
 
-        List<ToDoService> toDo = List.of(new ToDoService(),new ToDoService());
-        ToDoService toDoServiceMock = mock(ToDoService.class);
-        when(toDoServiceMock.getAllToDos()).thenReturn(Optional.of(new ToDoService("01","Putzen")));
+        ToDoService toDoService = new ToDoService(dbMock);
+        toDoService.addToDo(todo);
 
-        ToDoService toDoServiceMock = new ToDoService(Mock);
-        List<ToDo> result = toDoServiceMock.getAllToDos();
-        assertEquals(allToDos, result);
-    }
-
-
-    @Autowired
-    @MockBean
-    ToDoRepo toDoRepo;
-    @Test
-    void shouldGetToDo(){
-        ToDoRepo toDoRepo = new ToDoRepo();
-        ToDoRepo repoMock = mock(ToDoRepo.class);
-        when(repoMock.get("01").thenReturn(Optional.of(new ToDo("Putzen","0"));
-
-        ToDoService toDoServiceMock = new ToDoService((dbMock));
-        ToDo result = toDoService.getAllToDo().get("Putzen","0");
-        assertEquals(toDo, result);
-
-
+        verify(dbMock).save(todo);
     }
 
     @Test
-    void shouldSetStatus(){
-
+    void shouldGetAllToDos(){
+        // GIVEN
+       ToDo todo1 = new ToDo();
+       todo1.setJobToDo("Putzen");
+       ToDo todo2 = new ToDo();
+       todo2.setJobToDo("Einkaufen");
+       ToDo todo3 = new ToDo();
+       todo3.setJobToDo("Gassi gehen");
+       List<ToDo> allToDos = List.of(todo1,todo2,todo3);
+       List<ToDo> expectedToDos = List.of(todo1, todo2, todo3);
+       ToDoRepo dbMock = mock(ToDoRepo.class);
+       // WHEN
+       when(dbMock.findAll()).thenReturn(allToDos);
+       // THEN
+       assertEquals(expectedToDos,allToDos);
     }
 
+    @Test
+    void shouldDeleteById(){
+        // GIVEN
+        ToDoRepo dbMock = mock(ToDoRepo.class);
+        ToDoService toDoService = new ToDoService(dbMock);
+        // WHEN
+        toDoService.deleteId("01");
+        //THEN
+        verify(dbMock).deleteById("01");    // verify testet, ob die Funktion deleteById aufgerufen wurde
+    }
 }
 
-*/

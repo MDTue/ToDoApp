@@ -15,7 +15,6 @@ export default function ToDoList() {
     const fetchAll = useCallback (() => {
         fetch(`${process.env.REACT_APP_BASE_URL}/todos`)
             .then(response => {
-                console.log(response.status)
                 if (response.status===200) {
                     return response.json()
                 }
@@ -23,7 +22,6 @@ export default function ToDoList() {
             })
             .then((toDosFromBackend: Array<ToDo>) => setToDos(toDosFromBackend))
             .catch(e  => {
-                console.error(e.message)
                 setErrorMessage(e.message)
             })
     },[])
@@ -55,7 +53,7 @@ export default function ToDoList() {
                 <h1> ToDo App</h1>
             </div >
             <div >
-                {/*  // <button onClick={deleteChecked}>{t('DeleteSelected')}</button> */}
+                <button onClick={deleteChecked}>{t('DeleteSelected')}</button>
 
                 <ul>
                     {toDos.length>0 && toDos.map(todo => <li data-testid="todolist" className="spalte1" key={todo.jobId}><ToDoItem todo={todo} onToDoDeletion={fetchAll} onToDoChange={setToDos} /></li>)}

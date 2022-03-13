@@ -10,10 +10,10 @@ import java.util.Optional;
 public class ToDoService {
     private final ToDoRepo myToDoRepo;
 
-
     public ToDoService(ToDoRepo myToDoRepo){
         this.myToDoRepo = myToDoRepo;
     }
+
 
     public List<ToDo> getAllToDo() {
         return myToDoRepo.findAll();
@@ -22,6 +22,7 @@ public class ToDoService {
     public void addToDo(ToDo jobToDo){
         myToDoRepo.save(jobToDo);
     }
+
     public void changeStatus(String id) {
         myToDoRepo.findById(id).ifPresent(todo-> {
             todo.setJobStatus(Status.OPEN);
@@ -42,4 +43,5 @@ public class ToDoService {
     public void deleteId(String id) {
         myToDoRepo.deleteById(id);
     }
+
 }

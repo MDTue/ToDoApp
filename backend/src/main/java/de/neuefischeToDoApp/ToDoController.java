@@ -29,7 +29,6 @@ public class ToDoController {
     @GetMapping("/allnewToDos")
     public List <ToDo> showNewToDos(){
         return toDoService.getOpenToDos();
-
     }
 
     @DeleteMapping("/{id}")

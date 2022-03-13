@@ -5,8 +5,6 @@ import reportWebVitals from './reportWebVitals';
 import './i18n';
 import ToDoList from "./ToDoList";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-{/* import ToDoItem from "./ToDoItem"; */}
-
 
 ReactDOM.render(
     <React.StrictMode>
@@ -15,7 +13,7 @@ ReactDOM.render(
                 <Routes>
                     <Route path="/" element={<App />}/>
                     <Route path= "toDoList" element={<ToDoList/>}/>
-                    {/*    <Route path ="toDoItem/:jobId" element={<ToDoItem />}/>  */ }
+                    <Route path='*' element={<App />} />
                 </Routes>
             </BrowserRouter>
 

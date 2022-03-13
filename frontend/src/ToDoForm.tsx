@@ -1,6 +1,5 @@
 import {ToDo} from "./model";
-import {FormEvent, useEffect, useState} from "react";
-import './ToDoForm.css'
+import {useEffect, useState} from "react";
 import {useTranslation} from 'react-i18next';
 
 
@@ -46,6 +45,7 @@ export default function ToDoForm(props: ToDoFromProps){
 
     return(
         <div>
+            {errorMessage};
             <input type="text" placeholder={t('Aufgabe')} value ={task} onChange={ev => setTask(ev.target.value)}/>
             <input type="text" placeholder={t('Beschreibung')} value={description} onChange={ev => setDescription(ev.target.value)} className="description-field"/>
             <button onClick={addTask}>  {t('Senden')}</button>
