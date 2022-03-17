@@ -11,6 +11,6 @@ public class UserDocument {
     String Id;
     String email;
     String name;
-    String passwort;
+    String password;
     String role;
 }

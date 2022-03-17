@@ -7,12 +7,22 @@ public class ToDo {
     Status jobStatus;
     String jobId;
     String description;
+    String user;
 
     public ToDo(String jobToDo, Status jobStatus) {
         this.jobToDo = jobToDo;
         this.jobStatus = jobStatus;
         this.jobId = UUID.randomUUID().toString();
+        this.user = user;
           }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 
     public String getDescription() {
         return description;

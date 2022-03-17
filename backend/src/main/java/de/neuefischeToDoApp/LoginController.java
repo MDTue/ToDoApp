@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/todos/login")
+@RequestMapping("/api/login")
 @RequiredArgsConstructor
 
 public class LoginController {
@@ -42,6 +42,7 @@ public class LoginController {
                 .stream()
                 .map(GrantedAuthority::getAuthority)
                 .toList();
-
     }
+
+
 }

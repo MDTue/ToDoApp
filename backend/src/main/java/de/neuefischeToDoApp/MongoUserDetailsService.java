@@ -18,7 +18,7 @@ public class MongoUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userService.findByEmail(username)
-                .map(userDocument -> new User(userDocument.getEmail(), userDocument.getPasswort(), List.of(new SimpleGrantedAuthority("ROLE_" +userDocument.getRole()))))
+                .map(userDocument -> new User(userDocument.getEmail(), userDocument.getPassword(), List.of()))
                 .orElseThrow(() -> new UsernameNotFoundException(username + " not found"));
     }
 

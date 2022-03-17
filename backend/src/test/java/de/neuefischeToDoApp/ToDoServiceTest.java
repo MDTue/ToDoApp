@@ -20,7 +20,7 @@ class ToDoServiceTest {
         ToDoRepo dbMock = mock(ToDoRepo.class);
 
         ToDoService toDoService = new ToDoService(dbMock);
-        toDoService.addToDo(todo);
+        toDoService.addToDo(todo, "kk");
 
         verify(dbMock).save(todo);
     }
@@ -49,7 +49,7 @@ class ToDoServiceTest {
         ToDoRepo dbMock = mock(ToDoRepo.class);
         ToDoService toDoService = new ToDoService(dbMock);
         // WHEN
-        toDoService.deleteId("01");
+        toDoService.deleteId("01","KK");
         //THEN
         verify(dbMock).deleteById("01");    // verify testet, ob die Funktion deleteById aufgerufen wurde
     }

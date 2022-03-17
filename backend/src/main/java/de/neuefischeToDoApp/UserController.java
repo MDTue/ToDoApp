@@ -17,7 +17,7 @@ public class UserController {
 
     @PostMapping
     public UserDocument createUser(@RequestBody UserDocument user) {
-        user.setPasswort(passwordEncoder.encode(user.getPasswort()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userService.createUser(user);
     }
 
