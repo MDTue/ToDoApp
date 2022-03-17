@@ -43,15 +43,16 @@ export default function ToDoList() {
 
     return(
 
-        <div className="todolist">
+        <div className="todo-list">
             <Link to={'/todolist'}> ToDoListe </Link>
             {t(errorMessage)}
-            <div>
-                <ToDoForm onToDoCreation={setToDos}/>
-            </div>
             <div className="header">
                 <h1> ToDo App</h1>
             </div >
+            <div>
+                <ToDoForm onToDoCreation={setToDos}/>
+            </div>
+
             <div >
                 <button onClick={deleteChecked}>{t('DeleteSelected')}</button>
 

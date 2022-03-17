@@ -13,7 +13,7 @@ body {
     row-gap: 50px;
     border-style : double;
     border-radius: 3%;
-    width: 60px;
+    width: auto;
 }
 
 .spalte1{
