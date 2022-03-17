@@ -11,8 +11,8 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>todo-app-backend</name>
     <description>Demo to deploy frontend and backend</description>
-    <dependencies>
 
+    <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -70,7 +70,7 @@
                 <configuration>
                     <nodeVersion>v16.13.1</nodeVersion>
                     <npmVersion>8.1.2</npmVersion>
-                    <workingDirectory>../../../frontend</workingDirectory>
+                    <workingDirectory>../frontend</workingDirectory>
                 </configuration>
                 <executions>
                     <execution>
@@ -120,7 +120,7 @@
                         </goals>
                         <phase>prepare-package</phase>
                         <configuration>
-                            <outputDirectory>../../target/classes/static</outputDirectory>
+                            <outputDirectory>target/classes/static</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>${project.parent.basedir}/frontend/build</directory>
