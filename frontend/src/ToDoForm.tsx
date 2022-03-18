@@ -12,17 +12,20 @@ export default function ToDoForm(props: ToDoFromProps){
     const {t} = useTranslation();
     const[task, setTask] = useState(localStorage.getItem('task') ?? '');
     const[description, setDescription] = useState(localStorage.getItem('description') ?? '');
+    const[token, setToken] = useState(localStorage.getItem('token') ?? '');
     const[errorMessage, setErrorMessage] = useState('');
 
     const addTask = () => {
         fetch(`${process.env.REACT_APP_BASE_URL}/todos`,{
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Authorization': `Bearer ${token}`,
+                'Content-Type' : 'application/json'
             },
             body: JSON.stringify({
                 jobToDo: task,
-                description: description
+                description: description,
+                token: token
             })
         })
             .then(response => {

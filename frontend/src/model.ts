@@ -3,6 +3,7 @@ export interface ToDo {
     jobStatus: string;
     jobId: string;
     description : string;
+    user: string;
 }
 
 

@@ -5,14 +5,17 @@ import reportWebVitals from './reportWebVitals';
 import './i18n';
 import ToDoList from "./ToDoList";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Login from "./Login";
+import Register from "./Register";
 
 ReactDOM.render(
     <React.StrictMode>
         <Suspense fallback="Loading..">
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<App />}/>
-                    <Route path= "toDoList" element={<ToDoList/>}/>
+                    <Route path="/login" element={<Login/>}/>
+                    <Route path= "/register" element={<Register/>}/>
+                    <Route path= "/toDoList" element={<ToDoList/>}/>
                     <Route path='*' element={<App />} />
                 </Routes>
             </BrowserRouter>

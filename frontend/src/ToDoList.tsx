@@ -13,7 +13,12 @@ export default function ToDoList() {
     const[errorMessage, setErrorMessage] = useState('');
 
     const fetchAll = useCallback (() => {
-        fetch(`${process.env.REACT_APP_BASE_URL}/todos`)
+        fetch(`${process.env.REACT_APP_BASE_URL}/todos`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            },
+        })
             .then(response => {
                 if (response.status===200) {
                     return response.json()
