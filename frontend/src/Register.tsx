@@ -1,11 +1,12 @@
 import './Login.css'
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useState} from "react";
 
 export default function Register() {
     const [loginName, setLoginName] = useState('')
     const [loginPW, setLoginPW] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
+    const nav = useNavigate()
 
     const Register = () => {
         fetch(`${process.env.REACT_APP_BASE_URL}/api/users`,{
@@ -26,7 +27,10 @@ export default function Register() {
             })
 
             .catch(e=> setErrorMessage(e.message));
+            nav("/login")
+
     }
+
 
 
     return(

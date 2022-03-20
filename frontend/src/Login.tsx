@@ -3,6 +3,7 @@ import './Login.css'
 import {Link, useNavigate} from "react-router-dom";
 import {useState} from "react";
 
+
 export default function Login() {
     const [loginName, setLoginName] = useState('')
     const [loginPW, setLoginPW] = useState('')
@@ -24,7 +25,7 @@ export default function Login() {
                 if (response.status === 200) {
                     return response.json()
                 }
-                throw new Error("NotFound")
+                throw new Error("Unbekannter Loginname. Bitte zuerst registrieren!")
             })
             .then (response=>{
                 localStorage.setItem('token',response.token)
@@ -32,21 +33,23 @@ export default function Login() {
             })
 
             .catch(e=> setErrorMessage(e.message));
+             nav("/register")
     }
 
 
 return(
-    <div className="login">
-        <Link to={'login'}>Login</Link>
-        <div className="header">
-            <h1> Login für angemeldete User</h1>
-        </div>
-        {errorMessage}
-        <div>
-            <input className={'form_task'} type="email" placeholder={"E-Mail"} value ={loginName} onChange={ev => setLoginName(ev.target.value)}/>
-            <input className={'form_desc'} type="password" placeholder={"Passwort"} value={loginPW} onChange={ev => setLoginPW(ev.target.value)} />
-            <button onClick={loginUser}>  Anmelden </button>
+    <div>
+        <div className="login">
+            <div className="header">
+                <h1> Login für angemeldete User</h1>
+            </div>
 
+            <div>
+                <input className={'form_task'} type="email" placeholder={"E-Mail"} value ={loginName} onChange={ev => setLoginName(ev.target.value)}/>
+                <input className={'form_desc'} type="password" placeholder={"Passwort"} value={loginPW} onChange={ev => setLoginPW(ev.target.value)} />
+                <button onClick={loginUser}>  Anmelden </button>
+
+            </div>
         </div>
     </div>
 )

@@ -16,6 +16,7 @@ export default function ToDoList() {
         fetch(`${process.env.REACT_APP_BASE_URL}/todos`, {
             method: 'GET',
             headers: {
+                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
             },
         })
@@ -49,7 +50,7 @@ export default function ToDoList() {
     return(
 
         <div className="todo-list">
-            <Link to={'/todolist'}> ToDoListe </Link>
+            <Link to={'/OnLogout'}> OnLogout </Link>
             {t(errorMessage)}
             <div className="header">
                 <h1> ToDo App</h1>
