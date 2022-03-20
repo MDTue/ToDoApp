@@ -25,13 +25,15 @@ public class LoginController {
     private final JwtService jwtService;
 
     @PostMapping
-    public String login(@RequestBody LoginData loginData){
+    public Token login(@RequestBody LoginData loginData){
         try {
             Authentication auth = authentificationManager.authenticate(new UsernamePasswordAuthenticationToken(loginData.getEmail(), loginData.getPassword()));
 
             Map<String, Object> claims = new HashMap<>();
             claims.put("roles", getRoles(auth));
-            return jwtService.createToken(claims, loginData.getEmail());
+            String token =  jwtService.createToken(claims, loginData.getEmail());
+            Token token1 = new Token(token);
+            return token1;
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "invalid credentials");
         }
