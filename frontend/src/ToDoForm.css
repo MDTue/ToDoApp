@@ -1,18 +1,16 @@
 .todoForm{
-    align-content: center;
+
 }
 
 .form_task{
-    display: block;
-    width: 30%;
-    margin: 0 0 2rem 2rem;
+    width: 50%;
+    margin: 2px;
     border-radius: 5px;
 }
 
 .form_desc{
-    display: block;
-    width: 30%;
-    margin: 0 0 1rem 2rem;
+    width: 50%;
+    margin: 2px;
     border-radius: 5px;
 }
 .form_btn{

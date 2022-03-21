@@ -17,14 +17,11 @@ body {
 }
 
 .spalte1{
-    grid-column-start: 2;
-
+    grid-column-start: 1;
 }
 
 .spalte2{
     grid-column-start: 3;
-
-
 }
 
 .spalte3{
@@ -32,11 +29,6 @@ body {
 
 
 }
-
-
-
-
-
 .header{
     grid-row-start: 1 ;
     grid-column-start: 2;

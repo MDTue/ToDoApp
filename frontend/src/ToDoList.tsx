@@ -50,7 +50,7 @@ export default function ToDoList() {
     return(
 
         <div className="todo-list">
-            <Link to={'/OnLogout'}> OnLogout </Link>
+            <Link to={'/OnLogout'}> Logout </Link>
             {t(errorMessage)}
             <div className="header">
                 <h1> ToDo App</h1>

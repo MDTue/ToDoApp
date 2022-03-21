@@ -1,7 +1,8 @@
 
 import './Login.css'
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useState} from "react";
+import OnLogout from "./OnLogout";
 
 
 export default function Login() {
@@ -9,6 +10,8 @@ export default function Login() {
     const [loginPW, setLoginPW] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
     const nav = useNavigate()
+
+    OnLogout()
 
     const loginUser = () => {
         fetch(`${process.env.REACT_APP_BASE_URL}/api/login`,{
@@ -32,7 +35,7 @@ export default function Login() {
                 nav("/toDoList")
             })
 
-            .catch(e=> setErrorMessage(e.message));
+            .catch(e=> setErrorMessage(errorMessage));
              nav("/register")
     }
 
