@@ -16,7 +16,11 @@ export default function ToDoItem(props: ToDoItemProps) {
 
         const deleteToDo = () => {
         fetch(`${process.env.REACT_APP_BASE_URL}/todos/${props.todo.jobId}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            },
         })
             .then(() => props.onToDoDeletion())
             .catch(e  => setErrorMessage(e.message))
@@ -27,7 +31,8 @@ export default function ToDoItem(props: ToDoItemProps) {
         fetch(`${process.env.REACT_APP_BASE_URL}/todos/${props.todo.jobId}`, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
             },
             body: JSON.stringify({
                 jobId: props.todo.jobId,

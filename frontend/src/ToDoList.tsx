@@ -13,7 +13,13 @@ export default function ToDoList() {
     const[errorMessage, setErrorMessage] = useState('');
 
     const fetchAll = useCallback (() => {
-        fetch(`${process.env.REACT_APP_BASE_URL}/todos`)
+        fetch(`${process.env.REACT_APP_BASE_URL}/todos`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            },
+        })
             .then(response => {
                 if (response.status===200) {
                     return response.json()
@@ -43,15 +49,16 @@ export default function ToDoList() {
 
     return(
 
-        <div className="todolist">
-            <Link to={'/todolist'}> ToDoListe </Link>
+        <div className="todo-list">
+            <Link to={'/OnLogout'}> Logout </Link>
             {t(errorMessage)}
-            <div>
-                <ToDoForm onToDoCreation={setToDos}/>
-            </div>
             <div className="header">
                 <h1> ToDo App</h1>
             </div >
+            <div>
+                <ToDoForm onToDoCreation={setToDos}/>
+            </div>
+
             <div >
                 <button onClick={deleteChecked}>{t('DeleteSelected')}</button>
 
