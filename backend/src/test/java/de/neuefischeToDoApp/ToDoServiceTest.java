@@ -46,12 +46,16 @@ class ToDoServiceTest {
     @Test
     void shouldDeleteById(){
         // GIVEN
+        ToDo testToDo = new ToDo();
+        testToDo.setJobId("01");
+        testToDo.setUser("KK");
         ToDoRepo dbMock = mock(ToDoRepo.class);
         ToDoService toDoService = new ToDoService(dbMock);
         // WHEN
+        when(dbMock.findByJobIdAndUser("01","KK")).thenReturn(Optional.of(testToDo));
         toDoService.deleteId("01","KK");
         //THEN
-        verify(dbMock).deleteById("01");    // verify testet, ob die Funktion deleteById aufgerufen wurde
+        verify(dbMock).deleteByJobIdAndUser("01","KK");    // verify testet, ob die Funktion deleteById aufgerufen wurde
     }
 }
 

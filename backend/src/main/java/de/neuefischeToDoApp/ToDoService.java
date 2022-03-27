@@ -51,7 +51,7 @@ public class ToDoService {
         if (foundToDo.isPresent()) {
             var x = foundToDo.get();
             if (x.getUser().equals(name) && x.getJobId().equals(id)) {
-                myToDoRepo.deleteById(id);
+                myToDoRepo.deleteByJobIdAndUser(id, name);
             }
 
         }
